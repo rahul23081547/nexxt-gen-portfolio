@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide cursor on touch devices */
+@media (hover: none) {
+  .custom-cursor {
+    display: none;
+  }
+  
+  button.cursor-toggle {
+    display: none;
+  }
+}
+
+/* Hide Spline branding globally */
+spline-viewer::part(logo) {
+  display: none !important;
+}
+
+spline-viewer {
+  --spline-logo-display: none !important;
+}
+
+/* Additional CSS to hide Spline watermark/branding */
+spline-viewer::shadow .spline-watermark,
+spline-viewer::shadow .logo,
+spline-viewer::shadow [class*="logo"],
+spline-viewer::shadow [class*="watermark"],
+spline-viewer::shadow [class*="branding"],
+spline-viewer::shadow [data-testid*="logo"],
+spline-viewer::shadow [data-testid*="watermark"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide any floating buttons in bottom corner */
+spline-viewer::shadow div[style*="position: absolute"][style*="bottom"],
+spline-viewer::shadow div[style*="position: fixed"][style*="bottom"] {
+  display: none !important;
+}
+
+/* Force hide any Spline UI elements */
+spline-viewer * {
+  --spline-ui-display: none !important;
+}
